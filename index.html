@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Pilot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <h1 class="logo">Job Pilot<span>.</span></h1>
+
+            <p class="nav-heading">WORKSPACE</p>
+
+            <nav>
+                <button class="nav-link active" data-page="dashboard">
+                    Dashboard
+                </button>
+                <button class="nav-link" data-page="applications">
+                    Applications
+                </button>
+            </nav>
+
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="subtitle">YOUR CAREER WORKSPACE</p>
+                    <h2 id="page-title">Dashboard</h2>
+                </div>
+            </header>
+
+            <!-- DASHBOARD -->
+            <section class="page-section" id="dashboard-page">
+                <div class="welcome-section">
+                    <div>
+                        <h2>Your job hunt, organized.</h2>
+                        <p class="subtitle">
+                            Keep track of your opportunities and progress.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" data-page="add-application">
+                        + Add Application
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <p>Total Applications</p>
+                        <h2 id="total-count">0</h2>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Interviews</p>
+                        <h2 id="interview-count">0</h2>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Offers</p>
+                        <h2 id="offer-count">0</h2>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Awaiting Response</p>
+                        <h2 id="waiting-count">0</h2>
+                    </article>
+                </div>
+
+                <!-- RECENT APPLICATIONS -->
+                <div id="recent-applications-section">
+                    <div class="section-heading">
+                        <div>
+                            <h2>Recent Applications</h2>
+                            <p class="subtitle">Your latest opportunities</p>
+                        </div>
+
+                        <button class="text-button" data-page="applications">
+                            View all →
+                        </button>
+                    </div>
+
+                    <p id="dashboard-empty" class="empty-state" hidden>
+                        No applications yet. Add your first opportunity to get started.
+                    </p>
+
+                    <div id="recent-job-list" class="job-list"></div>
+                </div>
+
+                <!-- NEW APPLICATION FORM WILL APPEAR HERE -->
+                <div id="dashboard-add-form" hidden>
+                    <div class="section-heading">
+                        <div>
+                            <h2>New Application</h2>
+                            <p class="subtitle">A new opportunity, all in one place.</p>
+                        </div>
+                    </div>
+
+                    <form id="job-form" class="application-form">
+                        <details class="form-section" open>
+                            <summary>
+                                <span class="section-number">01</span>
+                                <span class="section-summary">
+                                    <strong>Company &amp; Job Details</strong>
+                                    <small>Where are you applying?</small>
+                                </span>
+                            </summary>
+
+                            <div class="section-content">
+                                <label for="company">Company name *</label>
+                                <input type="text" id="company"
+                                    placeholder="e.g. Capgemini" required>
+
+                                <label for="position">Job title *</label>
+                                <input type="text" id="position"
+                                    placeholder="e.g. Data Analyst" required>
+
+                                <label for="job-link">Job posting link</label>
+                                <input type="url" id="job-link"
+                                    placeholder="https://...">
+
+                                <div class="form-row">
+                                    <div>
+                                        <label for="application-date">Application date</label>
+                                        <input type="date" id="application-date">
+                                    </div>
+
+                                    <div>
+                                        <label for="application-status">Status</label>
+                                        <select id="application-status">
+                                            <option>Applied</option>
+                                            <option>Assessment</option>
+                                            <option>Interview</option>
+                                            <option>Offer</option>
+                                            <option>Rejected</option>
+                                            <option>Withdrawn</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="form-section">
+                            <summary>
+                                <span class="section-number">02</span>
+                                <span class="section-summary">
+                                    <strong>Your CV</strong>
+                                    <small>Upload, add a link, or paste your CV.</small>
+                                </span>
+                            </summary>
+
+                            <div class="section-content">
+                                <label for="cv-file">Upload CV</label>
+                                <input type="file" id="cv-file"
+                                    accept=".pdf,.doc,.docx,.txt">
+
+                                <label for="cv-link">Or add a document link</label>
+                                <input type="url" id="cv-link"
+                                    placeholder="https://...">
+
+                                <label for="cv-text">Or paste your CV text</label>
+                                <textarea id="cv-text" rows="6"
+                                    placeholder="Paste your CV here..."></textarea>
+                            </div>
+                        </details>
+
+                        <details class="form-section">
+                            <summary>
+                                <span class="section-number">03</span>
+                                <span class="section-summary">
+                                    <strong>Cover Letter</strong>
+                                    <small>Keep the version used for this job.</small>
+                                </span>
+                            </summary>
+
+                            <div class="section-content">
+                                <label for="cover-letter-file">Upload cover letter</label>
+                                <input type="file" id="cover-letter-file"
+                                    accept=".pdf,.doc,.docx,.txt">
+
+                                <label for="cover-letter-link">Or add a document link</label>
+                                <input type="url" id="cover-letter-link"
+                                    placeholder="https://...">
+
+                                <label for="cover-letter-text">Or write or paste it here</label>
+                                <textarea id="cover-letter-text" rows="6"
+                                    placeholder="Write your cover letter..."></textarea>
+                            </div>
+                        </details>
+
+                        <details class="form-section">
+                            <summary>
+                                <span class="section-number">04</span>
+                                <span class="section-summary">
+                                    <strong>Additional Information</strong>
+                                    <small>Notes, recruiter details, and reminders.</small>
+                                </span>
+                            </summary>
+
+                            <div class="section-content">
+                                <label for="application-notes">Notes</label>
+                                <textarea id="application-notes" rows="4"
+                                    placeholder="Anything you want to remember about this opportunity..."></textarea>
+                            </div>
+                        </details>
+
+                        <div class="form-actions">
+                            <button type="button" class="secondary-button"
+                                data-page="dashboard">Cancel</button>
+                            <button type="submit" class="primary-button">
+                                Save Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- ALL APPLICATIONS -->
+            <section class="page-section" id="applications-page" hidden>
+                <div class="section-heading">
+                    <div>
+                        <h2>All Applications</h2>
+                        <p class="subtitle">Manage every opportunity in one place.</p>
+                    </div>
+
+                    <button class="primary-button" data-page="add-application">
+                        + Add Application
+                    </button>
+                </div>
+
+                <div class="toolbar">
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search company or job title..."
+                        aria-label="Search applications"
+                    >
+
+                    <select id="status-filter" aria-label="Filter applications">
+                        <option value="All">All statuses</option>
+                        <option value="Applied">Applied</option>
+                        <option value="Assessment">Assessment</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Offer">Offer</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Withdrawn">Withdrawn</option>
+                    </select>
+
+                    <select id="sort-order" aria-label="Sort applications">
+                        <option value="newest">Newest first</option>
+                        <option value="oldest">Oldest first</option>
+                        <option value="waiting">Longest waiting</option>
+                        <option value="company">Company A–Z</option>
+                    </select>
+                </div>
+
+                <p id="results-count" class="subtitle"></p>
+
+                <div id="job-list" class="job-list"></div>
+
+                <p id="empty-state" class="empty-state">
+                    No applications yet. Add your first opportunity to get started.
+                </p>
+
+                <p id="no-results" class="empty-state" hidden>
+                    No applications match your search.
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
