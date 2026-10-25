@@ -74,7 +74,4 @@ cd jobpilot
 Contributing
 This is a personal learning project, but ideas and suggestions are welcome. Feel free to open an issue.
 
-License
-MIT (update if you choose a different license)
-
 
